@@ -35,7 +35,7 @@
 <div id="navbar" class="col-md-4 col-lg-2">
 <header class="col-md-4 col-lg-2">
 <h1>
-<a href="../en/">
+<a href="/">
 <img src="/assets/img/logo.svg">
 </a></h1>
 <form action="../search.html" method="get">
@@ -58,24 +58,67 @@
 <a href="/en/applayout.html"><i class="fa fa-folder" aria-hidden="true"></i> App Structure</a>
 </li>
 <li>
-<a href="#"><i class="fa fa-file-text" aria-hidden="true"></i> Pages</a>
+<a href="/en/pages/creating_pages.html"><i class="fa fa-file-text" aria-hidden="true"></i> Pages</a>
 <ul>
+<li>
+<a href="/en/pages/creating_pages.html">- Creating Pages</a>
+</li>
 <li>
 <a href="/en/pages/components.html">- Riot.JS Components</a>
 </li>
 <li>
-<a href="/en/pages/markup.html">- Creating Pages</a>
+<a href="/en/pages/creating_pages.html#page-lifecycle">- Page Lifecycle</a>
 </li>
 <li>
 <a href="/en/pages/dependencies.html">- Managing Dependencies</a>
 </li>
 <li>
-<a href="#">Level 2</a>
+<a href="/en/pages/sync_rendering.html">- Syncronous Rendering</a>
 </li>
 <li>
-<a href="#">Level 3</a>
+<a href="/en/pages/sync_rendering.html">- Routing Scheme</a>
 </li>
 </ul>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html"><i class="fa fa-check-square" aria-hidden="true"></i> Forms</a>
+<ul>
+<li>
+<a href="/en/pages/creating_pages.html">- Handling Forms</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- Validating Forms</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- Server-sent State</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html"><i class="fa fa-server" aria-hidden="true"></i> Backend</a>
+<ul>
+<li>
+<a href="/en/pages/creating_pages.html">- Feathers.JS Services</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- Socket.IO/Realtime API</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- MongoDB Services</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- Configuration</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html">- Deployment</a>
+</li>
+</ul>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html"><i class="fa fa-id-card" aria-hidden="true"></i> Authentication</a>
+</li>
+<li>
+<a href="/en/pages/creating_pages.html"><i class="fa fa-handshake-o" aria-hidden="true"></i> License</a>
 </li>
 </ul>
 </nav>
@@ -91,7 +134,7 @@ Powered by <a href="https://skydocs.skyost.eu">SkyDocs</a> v0.7.4 Beta.
 <li><small><a href="https://github.com/Skyost/SkyDocs/fork" class="text-muted">Fork it on Github</a></small></li>
 <li><small><a href="https://github.com/Skyost/SkyDocs" class="text-muted">Star it on Github</a></small></li>
 </ul>
-<small class="date text-muted">Jul 23, 2019 1:01:25 PM</small>
+<small class="date text-muted">Jul 23, 2019 2:45:32 PM</small>
 </section>
 <section>
 <h1>Search results</h1>
@@ -101,7 +144,7 @@ Powered by <a href="https://skydocs.skyost.eu">SkyDocs</a> v0.7.4 Beta.
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/lunr.js/2.1.4/lunr.min.js"></script>
 <script type="text/javascript">
 
-	const PAGES = {'-en-pages-dependencies.html': {title: 'Managing Dependencies', content: 'Managing DependenciesFrontless plays well with any javascript libraries or frameworks. It is possible to add dependencies to the bundle o...', url: 'en/pages/dependencies.html'}, '-en-index.html': {title: 'Home', content: 'AboutFrontless is a minimalistic node.js stack  for building universal (ismorphic) javascript applications. It is built to boost develope...', url: 'en/index.html'}, '-fr-page.html': {title: 'Nouvelle page', content: 'PageCeci est une nouvelle page. Vous pouvez la modifier si vous voulez !Paragraphe 1Maecenas ipsum velit, consectetuer eu, lobortis ut, d...', url: 'fr/page.html'}, '-fr-index.html': {title: 'Accueil', content: 'AccueilBonjour à vous, et bienvenue sur Frontless !Comment modifier cette page ?Allez dans le dossier content et ouvrez le dossier corres...', url: 'fr/index.html'}, '-en-applayout.html': {title: 'Directory Structure', content: 'Application Structure1. AssetsMedia assets, external CSS and Javascript modules should be kept here.2. ComponentsRiot.JS components and a...', url: 'en/applayout.html'}, '-en-start.html': {title: 'Quick Start', content: 'Quick StartBefore getting started, make sure you have installed required software.If you don\'t need MongoDB for your application you can ...', url: 'en/start.html'}, '-en-pages-markup.html': {title: 'Creating Pages', content: 'Creating PagesPages in Frontless are pure Riot.JS components. The pages have the same structure and logics as Riot.JS components - hooks,...', url: 'en/pages/markup.html'}, '-en-pages-components.html': {title: 'Riot.JS', content: 'Riot.JS ComponentsRiot.JS components in Frontless are rendered on server and browser in the same way. However, working with javascript on...', url: 'en/pages/components.html'}};
+	const PAGES = {'-en-pages-sync_rendering.html': {title: 'Syncronous Rendering', content: 'Syncronous RenderingFrontless can render pages after all asynchronous calls are complete. Including children riot components nested insid...', url: 'en/pages/sync_rendering.html'}, '-en-pages-components.html': {title: 'Riot.JS', content: 'Riot.JS ComponentsRiot.JS components in Frontless are rendered on server and browser in the same way. However, working with javascript on...', url: 'en/pages/components.html'}, '-fr-index.html': {title: 'Accueil', content: 'AccueilBonjour à vous, et bienvenue sur Frontless !Comment modifier cette page ?Allez dans le dossier content et ouvrez le dossier corres...', url: 'fr/index.html'}, '-en-applayout.html': {title: 'Directory Structure', content: 'Application Structure1. AssetsMedia assets, external CSS and Javascript modules should be kept here.2. ComponentsRiot.JS components and a...', url: 'en/applayout.html'}, '-fr-page.html': {title: 'Nouvelle page', content: 'PageCeci est une nouvelle page. Vous pouvez la modifier si vous voulez !Paragraphe 1Maecenas ipsum velit, consectetuer eu, lobortis ut, d...', url: 'fr/page.html'}, '-en-pages-dependencies.html': {title: 'Managing Dependencies', content: 'Managing DependenciesFrontless plays well with any javascript libraries or frameworks. It is possible to add dependencies to the bundle o...', url: 'en/pages/dependencies.html'}, '-en-index.html': {title: 'Home', content: 'AboutFrontless is a minimalistic node.js stack  for building universal (ismorphic) javascript applications. It is built to boost develope...', url: 'en/index.html'}, '-en-pages-creating_pages.html': {title: 'Creating Pages', content: 'Creating PagesPages in Frontless are pure Riot.JS components. The pages have the same structure and logics as Riot.JS components - hooks,...', url: 'en/pages/creating_pages.html'}, '-en-start.html': {title: 'Quick Start', content: 'Quick StartBefore getting started, make sure you have installed required software.If you don\'t need MongoDB for your application you can ...', url: 'en/start.html'}};
 
 </script>
 <script type="text/javascript">
