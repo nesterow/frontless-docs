@@ -60,16 +60,16 @@ language: en
       weight: 1
 
 - title: '<i class="fa fa-server" aria-hidden="true"></i> Backend'
-  link: '/en/pages/creating_pages.html'
+  link: '/en/services.html'
   weight: 6
   children:
     - title: '- Feathers.JS Services'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/services.html'
       weight: 0
     - title: '- Socket.IO/Realtime API'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/services.html#socketio'
       weight: 1
-    - title: '- MongoDB Services'
+    - title: '- Working with MongoDB'
       link: '/en/pages/creating_pages.html'
       weight: 2
     - title: '- Configuration'
