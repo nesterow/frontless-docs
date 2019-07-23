@@ -2,33 +2,33 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Routing Scheme - Frontless</title>
+<title>Server-sent state - Frontless</title>
 
 <meta name="description" content="Documentation built with SkyDocs."/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="generator" content="SkyDocs v0.7.4 Beta"/>
 
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Routing Scheme - Frontless"/>
+<meta property="og:title" content="Server-sent state - Frontless"/>
 <meta property="og:site_name" content="Frontless"/>
-<meta property="og:url" content="https://skydocs.skyost.eu/en/pages/routing_scheme.html"/>
+<meta property="og:url" content="https://skydocs.skyost.eu/en/server_sent_state.html"/>
 <meta property="og:description" content="Documentation built with SkyDocs."/>
 <meta property="og:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Routing Scheme - Frontless"/>
+<meta name="twitter:title" content="Server-sent state - Frontless"/>
 <meta name="twitter:site" content="Frontless"/>
 <meta name="twitter:creator" content="@Skyost_"/>
-<meta name="twitter:url" content="https://skydocs.skyost.eu/en/pages/routing_scheme.html"/>
+<meta name="twitter:url" content="https://skydocs.skyost.eu/en/server_sent_state.html"/>
 <meta name="twitter:description" content="Documentation built with SkyDocs."/>
 <meta name="twitter:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 
 <meta name="theme-color" content="#2980b9"/>
-<link rel="icon" type="image/png" href="../../assets/img/icon.png"/>
+<link rel="icon" type="image/png" href="../assets/img/icon.png"/>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/css/bootstrap.min.css"/>
 <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato"/>
-<link rel="stylesheet" type="text/css" href="../../assets/css/page.css"/>
+<link rel="stylesheet" type="text/css" href="../assets/css/page.css"/>
 </head>
 <body>
 <div id="content" class="row">
@@ -38,7 +38,7 @@
 <a href="/">
 <img src="/assets/img/logo.svg">
 </a></h1>
-<form action="../../search.html" method="get">
+<form action="../search.html" method="get">
 <input name="keywords" type="text" class="form-control" placeholder="Search...">
 </form>
 </header>
@@ -142,66 +142,47 @@ Powered by <a href="https://skydocs.skyost.eu">SkyDocs</a> v0.7.4 Beta.
 <li><small><a href="https://github.com/Skyost/SkyDocs/fork" class="text-muted">Fork it on Github</a></small></li>
 <li><small><a href="https://github.com/Skyost/SkyDocs" class="text-muted">Star it on Github</a></small></li>
 </ul>
-<small class="date text-muted">Jul 23, 2019 3:12:24 PM</small>
+<small class="date text-muted">Jul 23, 2019 4:10:09 PM</small>
 </section>
 <section>
-<h1 id="routing-scheme">Routing Scheme</h1>
-<p>Any Riot.JS component placed in the page’s directory is accessible by its name in the browser, much like a .php script or a static page.
-For example: <code>[pages/index.riot -&gt; GET /]</code>, <code>[pages/page.riot -&gt; GET /page]</code>.
-The same rule applies to the sub-directories placed inside the <code>pages</code> folder. For example: For example: <code>[pages/foo/index.riot -&gt; GET /foo</code>], <code>[/pages/foo/bar.riot -&gt; GET /foo/bar]</code>.</p>
-<h2 id="url-query-on-the-server-side">URL Query on the server side</h2>
-<p>Every Riot component on the server side has access to the current <code>express.js</code> request context.
-Getting url paramenters is one of the many things you can do with it:</p>
-<pre><code class="language-javascript">export default () =&gt; ({
-  async fetch(){
-    const {query} = this.req;
-    console.log(query)
+<h1 id="server-sent-state">Server-sent State</h1>
+<p>When we make API requests which are supposed to show changes in UI. The best way would be to format a response the same way as the component's state. Frontless provides a simple method for that purpose - <code>app.setState(id, state)</code>. When a response is composed with this method the target component (id) will automatically update with the returned state.</p>
+<p><strong>Normally, you should follow thress simple steps to make it work:</strong></p>
+<ol>
+<li>Give your component an unique id:</li>
+</ol>
+<pre><code class="language-html">&lt;my-component&gt;
+  &lt;div&gt;{state.value}&lt;/div&gt;
+  &lt;script&gt;
+    export default () =&gt; ({
+      id: &quot;message&quot;,
+      state: {
+        value: ''
+      }
+    })
+  &lt;/script&gt;
+&lt;/my-component&gt;
+</code></pre>
+<ol start="2">
+<li>On backend use method app.setState() to compose a response:</li>
+</ol>
+<pre><code class="language-javascript">app.use('myservice',{
+  async create(data){
+    return app.setState('message', {
+      value: 'Hello!'
+    })
   }
 })
 </code></pre>
-<h2 id="positional-arguments">Positional Arguments</h2>
-<p>Positional argumnets are very convenient when you need to pass a positional parameter to the URL, like an <code>id</code>.
-Using a standard URL separator ('/') is not possible in Frontless, so additional parameters are separated by <code>@</code> sign.
-A semicolon-separated string after @ will be parsed as positional arguments.</p>
-<p>For example consider following request:</p>
-<pre><code class="language-bash">GET /page@foo;bar
-</code></pre>
-<p>This request will fetch page.riot and pass positional arguments into 'request.params.args':</p>
-<pre><code class="language-javascript">export default () =&gt; ({
-  async fetch(){
-    const {params} = this.req;
-    const [first, second] = params.args;
-    // first === 'foo'
-    // second === 'bar'
-  })
-}
-</code></pre>
-<h2 id="push-state">Push State</h2>
-<p>It is possible to cache page state into URL using HTML5 history API without reloading current location.
-For this purpose, Frontless provides a simple <code>pushQuery</code> method:</p>
-<pre><code class="language-javascript">// If userId = 10, age = 35
-// this would result to: http://example.com/page@10?age=35
-export default ()=&gt; ({
-  cacheState(){
-    const {userId, age} = this.state
-    this.pushQuery([userId], { age, })
-  }
-})
-</code></pre>
-<h2 id="redirect">Redirect</h2>
-<p>Redirect calls are universal and work the same way on client and server:</p>
-<pre><code class="language-javascript">// If user is not logged in
-// this would result to: http://example.com/login?backTo=/dashboard
-export default () =&gt; ({
-  onMounted(){
-    this.redirect('/login', [], { backTo: '/dashboard'})
-  }
-})
+<ol start="3">
+<li>Whenever you need to update the component's state, call the API method:</li>
+</ol>
+<pre><code class="language-javascript">client.service('myservice').create({})
 </code></pre>
 </section>
 <section id="pagination" class="clearfix">
-<a href="/en/pages/dependencies.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
-<a href="pages/layouts.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+<a href="/en/pages/sync_rendering.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
+<a href="forms/handling_forms.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
 </section>
 </article>
 </div>
@@ -211,6 +192,6 @@ export default () =&gt; ({
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.1/anchor.min.js"></script>
-<script src="../../assets/js/page.js"></script>
+<script src="../assets/js/page.js"></script>
 </body>
 </html>

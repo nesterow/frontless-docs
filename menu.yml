@@ -37,22 +37,31 @@ language: en
       weight: 5
       
 - title: '<i class="fa fa-check-square" aria-hidden="true"></i> Forms'
-  link: '/en/pages/creating_pages.html'
+  link: '/en/forms/handling_forms.html'
   weight: 4
   children:
     - title: '- Handling Forms'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/forms/handling_forms.html'
       weight: 0
     - title: '- Validating Forms'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/forms/handling_forms.html#validating-forms'
       weight: 1
+
+
+- title: '<i class="fa fa-refresh" aria-hidden="true"></i> Making Requests'
+  link: '/en/api_client.html'
+  weight: 5
+  children:
+    - title: '- API Client'
+      link: '/en/api_client.html'
+      weight: 0
     - title: '- Server-sent State'
-      link: '/en/pages/creating_pages.html'
-      weight: 2
+      link: '/en/server_sent_state.html'
+      weight: 1
 
 - title: '<i class="fa fa-server" aria-hidden="true"></i> Backend'
   link: '/en/pages/creating_pages.html'
-  weight: 5
+  weight: 6
   children:
     - title: '- Feathers.JS Services'
       link: '/en/pages/creating_pages.html'
@@ -72,8 +81,8 @@ language: en
 
 - title: '<i class="fa fa-id-card" aria-hidden="true"></i> Authentication'
   link: '/en/pages/creating_pages.html'
-  weight: 6
+  weight: 7
 
 - title: '<i class="fa fa-handshake-o" aria-hidden="true"></i> License'
   link: '/en/pages/creating_pages.html'
-  weight: 7
+  weight: 8

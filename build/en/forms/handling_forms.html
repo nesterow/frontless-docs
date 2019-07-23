@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
-<title>Creating Pages - Frontless</title>
+<title>Handling Forms - Frontless</title>
 
 <meta name="description" content="Documentation built with SkyDocs."/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 <meta name="generator" content="SkyDocs v0.7.4 Beta"/>
 
 <meta property="og:type" content="website"/>
-<meta property="og:title" content="Creating Pages - Frontless"/>
+<meta property="og:title" content="Handling Forms - Frontless"/>
 <meta property="og:site_name" content="Frontless"/>
-<meta property="og:url" content="https://skydocs.skyost.eu/en/pages/creating_pages.html"/>
+<meta property="og:url" content="https://skydocs.skyost.eu/en/forms/handling_forms.html"/>
 <meta property="og:description" content="Documentation built with SkyDocs."/>
 <meta property="og:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 
 <meta name="twitter:card" content="summary"/>
-<meta name="twitter:title" content="Creating Pages - Frontless"/>
+<meta name="twitter:title" content="Handling Forms - Frontless"/>
 <meta name="twitter:site" content="Frontless"/>
 <meta name="twitter:creator" content="@Skyost_"/>
-<meta name="twitter:url" content="https://skydocs.skyost.eu/en/pages/creating_pages.html"/>
+<meta name="twitter:url" content="https://skydocs.skyost.eu/en/forms/handling_forms.html"/>
 <meta name="twitter:description" content="Documentation built with SkyDocs."/>
 <meta name="twitter:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 
@@ -142,116 +142,59 @@ Powered by <a href="https://skydocs.skyost.eu">SkyDocs</a> v0.7.4 Beta.
 <li><small><a href="https://github.com/Skyost/SkyDocs/fork" class="text-muted">Fork it on Github</a></small></li>
 <li><small><a href="https://github.com/Skyost/SkyDocs" class="text-muted">Star it on Github</a></small></li>
 </ul>
-<small class="date text-muted">Jul 23, 2019 1:28:58 PM</small>
+<small class="date text-muted">Jul 23, 2019 3:55:30 PM</small>
 </section>
 <section>
-<h1 id="creating-pages">Creating Pages</h1>
-<p>Pages in Frontless are pure Riot.JS components. The pages have the same structure and logics as Riot.JS components - hooks, plugins, bindings, etc.
-The only difference is that a page context is availbale in the <a href="#layouts">layouts</a> scope.</p>
-<p><strong>Page Example:</strong></p>
-<pre><code class="language-html">&lt;my-page&gt;
-  &lt;app-header&gt;&lt;/app-header&gt;
-  &lt;h1&gt;Hello World&lt;/h1&gt;
+<h1 id="handling-user-input">Handling User Input</h1>
+<p>Frontless provides utils for handling HTML forms.</p>
+<h2 id="serializing-forms">Serializing Forms</h2>
+<p>The simplest way to get the values from a form is to use method serializeForm which takes the form's collected data and returns a name-value map.</p>
+<p>Example:</p>
+<pre><code class="language-html">&lt;my-form&gt;
+  &lt;form onsubmit={submit}&gt;
+    &lt;input type=&quot;text&quot; name=&quot;search&quot; /&gt;
+  &lt;/form&gt;
   &lt;script&gt;
-    import AppHeader from 'header.riot'
+    import {serializeForm} from '@frontless/core'
     export default () =&gt; ({
-      components: {
-        [AppHeader.name]: AppHeader
-      },
-      title: 'Example page',
-      foo: 'bar',
-      onMounted() {},
-      onHydrated() {}
+      submit(ev) {
+        ev.preventDefault()
+        const formData = serializeForm(ev.target)
+        // formData == { name: 'value' }
+      }
     })
   &lt;/script&gt;
-&lt;/my-page&gt;
+&lt;/my-form&gt;
 </code></pre>
-<h2 id="layouts">Layouts</h2>
-<p>Layouts provide HTML page structure for Riot.JS components. Frontless makes use of <a href="https://ejs.co/">EJS</a> in order to render output html on the server side.
-A page can specify a dedicated layout trough corresponding options.</p>
-<p><strong>A layout example:</strong></p>
-<pre><code class="language-html">&lt;html&gt;
-  &lt;head&gt;
-    &lt;meta charset=&quot;utf-8&quot;&gt;
-    &lt;link rel=&quot;stylesheet&quot; href=&quot;/assets/css/styles.min.css&quot;&gt; 
-    &lt;script src=&quot;/assets/application.js&quot;&gt;&lt;/script&gt;
-    &lt;%- head %&gt;
-    &lt;title&gt;&lt;%- page.title %&gt;&lt;/title&gt;
-  &lt;/head&gt;
-  &lt;body&gt;
-    &lt;style data-ssr-jss&gt;&lt;%- stylesheet %&gt;&lt;/style&gt;
-    &lt;%- output %&gt;
-    &lt;script&gt;document.__GLOBAL_SHARED_STATE = &lt;%- Global %&gt;;&lt;/script&gt;  
-    &lt;script type=&quot;data/json&quot; id=&quot;globals&quot;&gt;&lt;%- req.session.globals %&gt;&lt;/script&gt;
-    &lt;script type=&quot;data/json&quot; id=&quot;state&quot;&gt;&lt;%- state %&gt;&lt;/script&gt;
-    &lt;script type=&quot;data/json&quot; id=&quot;attributes&quot;&gt;&lt;%- shared %&gt;&lt;/script&gt;
-  &lt;/body&gt;
-&lt;/html&gt;
-</code></pre>
-<p>Page context is available in the layouts trough the <code>page</code> variable.</p>
-<hr/>
-<h3 id="page-lifecycle">PAGE LIFECYCLE <br><br></h3>
-<pre>
-                        INITIALIZE RIOT.JS ON SERVER
-
-           1.               2.                 3.                  4.
-     +-------------+   +-----------+    +----------------+     +----------+
-     | GET '/page' +-->+ onMount() +--->+ beforeRequest()+---->+ fetch()  |
-     +-------------+   +-----------+    +----------------+ |   +----------+
-                                                           |   +----------+
-                                                           +-->+ fetch()..|
-                                                           |   +----------+
-                                     5.                    +----... |
-                             +----------------+                     |
-                             | afterRequest() |     <---------------+
-                             +----------------+
-                                     |
-                                     v
-                                     6.
-                             +----------------+
-                             |  RETURN MARKUP |
-                             +----------------+
-                                     |
-                                     |
-                                     |
-                                     v
-                      INITIALIZE RIOT.JS APP IN BROWSER
-
-              +-----------+   +------------+   +-------------+
-              |onMounted()+-->+ onBrowser()+-->+ onHydrated()|
-              +-----------+   +------------+   +-------------+
-                                      |
-                                      |
-                                      v
-                            +-------------------+
-                            > APPLICATION READY |
-                            +-------------------+
-</pre>
-<hr/>
-<br>
-<br>
-<p><strong>All hooks and options:</strong></p>
-<pre><code class="language-javascript">export default () =&gt; ({
-
-  layout: 'base', // default to 'base'
-  title: 'Page Title',
-  access: {}, // access oprions
-  
-  beforeRequest() { /** Before `fetch` */ },
-  async fetch() { /** Operations on server, emits automatically in every mounted component */ },
-  afterRequest() { /** After `fetch` */  },
-  onRendered() { /** After everything is rendered on server */  },
-
-  onMounted() { /** Emits on server and bowser */ },
-  onBrowser() { /** Emits on browser after mounted*/ },
-  onHydrated() { /** Emits on browser only in page scope */ },
-  
-})
+<p>The method <code>submit</code> is executed whenever the user tries to submit form. Then serializer handles the form element from <code>ev.target</code> and returns a JSON-serializable object.</p>
+<h2 id="validating-forms">Validating Forms</h2>
+<p>It is recommended to use <a href="https://validatejs.org/">validate.js</a> since it works the same way in node.js as in the browser and it gives convenient output to use within javascript components.</p>
+<p>Simple Example:</p>
+<pre><code class="language-html">&lt;my-form&gt;
+  &lt;form onsubmit={submit}&gt;
+    &lt;input type=&quot;text&quot; name=&quot;search&quot; /&gt;
+    &lt;span class=&quot;error&quot; each={error in errors}&gt;{error}&lt;/span&gt;
+  &lt;/form&gt;
+  &lt;script&gt;
+    import {serializeForm} from '@frontless/core'
+    import validate from 'validators/myform'
+    export default () =&gt; ({
+      submit(ev) {
+        ev.preventDefault()
+        const formData = serializeForm(ev.target)
+        const errors = validate(formData)
+        if (errors) {
+          return this.update({errors,}) // stop and show the errors
+        }
+      }
+    })
+  &lt;/script&gt;
+&lt;/my-form&gt;
 </code></pre>
 </section>
 <section id="pagination" class="clearfix">
-<a href="/en/pages/components.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
-<a href="pages/layouts.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+<a href="/en/applayout.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
+<a href="forms/handling_forms.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
 </section>
 </article>
 </div>
