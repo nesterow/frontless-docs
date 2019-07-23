@@ -33,7 +33,7 @@ language: en
       link: '/en/pages/sync_rendering.html'
       weight: 4
     - title: '- Routing Scheme'
-      link: '/en/pages/sync_rendering.html'
+      link: '/en/pages/routing_scheme.html'
       weight: 5
       
 - title: '<i class="fa fa-check-square" aria-hidden="true"></i> Forms'
