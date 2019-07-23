@@ -1,0 +1,7 @@
+project_name: Frontless
+project_description: Documentation built with SkyDocs.
+project_url: https://skydocs.skyost.eu
+
+default_language: en
+lunr_search: true
+default_order_alphabetical: true

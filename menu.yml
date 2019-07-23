@@ -1,0 +1,36 @@
+---
+language: en
+---
+- title: '<i class="fa fa-home" aria-hidden="true"></i> About'
+  link: '/en/index.html'
+  weight: 0
+
+- title: '<i class="fa fa-rocket" aria-hidden="true"></i> Getting Started'
+  link: '/en/start.html'
+  weight: 1
+
+- title: '<i class="fa fa-folder" aria-hidden="true"></i> App Structure'
+  link: '/en/applayout.html'
+  weight: 2
+
+- title: '<i class="fa fa-file-text" aria-hidden="true"></i> Pages'
+  link: '#'
+  weight: 3
+  children:
+    - title: '- Riot.JS Components'
+      link: '/en/pages/components.html'
+      weight: 0
+    - title: '- Creating Pages'
+      link: '/en/pages/markup.html'
+      weight: 1
+    - title: '- Managing Dependencies'
+      link: '/en/pages/dependencies.html'
+      weight: 1
+      
+    - title: 'Level 2'
+      link: '#'
+      weight: 1
+    - title: 'Level 3'
+      link: '#'
+      weight: 2
+
