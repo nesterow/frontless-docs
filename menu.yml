@@ -70,19 +70,16 @@ language: en
       link: '/en/services.html#socketio'
       weight: 1
     - title: '- Working with MongoDB'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/mongodb.html'
       weight: 2
     - title: '- Configuration'
-      link: '/en/pages/creating_pages.html'
+      link: '/en/config.html'
       weight: 3
-    - title: '- Deployment'
-      link: '/en/pages/creating_pages.html'
-      weight: 4
 
 - title: '<i class="fa fa-id-card" aria-hidden="true"></i> Authentication'
-  link: '/en/pages/creating_pages.html'
+  link: '/en/authentication.html'
   weight: 7
 
 - title: '<i class="fa fa-handshake-o" aria-hidden="true"></i> License'
-  link: '/en/pages/creating_pages.html'
+  link: '/en/license.html'
   weight: 8

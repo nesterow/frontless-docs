@@ -3,7 +3,7 @@
 	
 	<head>
 	<meta charset="utf-8"/>
-	<title>Feathers.JS Client - Frontless</title>
+	<title>License - Frontless</title>
 
 	<!-- Description -->
 	<meta name="description" content="Documentation built with SkyDocs."/>
@@ -12,18 +12,18 @@
 	
 	<!-- OpenGraph -->
 	<meta property="og:type" content="website"/>
-	<meta property="og:title" content="Feathers.JS Client - Frontless"/>
+	<meta property="og:title" content="License - Frontless"/>
 	<meta property="og:site_name" content="Frontless"/>
-	<meta property="og:url" content="https://skydocs.skyost.eu/en/api_client.html"/>
+	<meta property="og:url" content="https://skydocs.skyost.eu/en/license.html"/>
 	<meta property="og:description" content="Documentation built with SkyDocs."/>
 	<meta property="og:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 	
 	<!-- Twitter -->
 	<meta name="twitter:card" content="summary"/>
-	<meta name="twitter:title" content="Feathers.JS Client - Frontless"/>
+	<meta name="twitter:title" content="License - Frontless"/>
 	<meta name="twitter:site" content="Frontless"/>
 	<meta name="twitter:creator" content="@Skyost_"/>
-	<meta name="twitter:url" content="https://skydocs.skyost.eu/en/api_client.html"/>
+	<meta name="twitter:url" content="https://skydocs.skyost.eu/en/license.html"/>
 	<meta name="twitter:description" content="Documentation built with SkyDocs."/>
 	<meta name="twitter:image" content="https://skydocs.skyost.eu/assets/img/icon.png"/>
 	
@@ -176,51 +176,42 @@
 	<ul class="links">
 		<li><small><a href="https://github.com/nesterow/frontless" > <i class="fa fa-github"></i> Github</a></small></li>
 	</ul>
-	<small class="date text-muted">Jul 29, 2019, 4:33:31 PM</small>
+	<small class="date text-muted">Jul 29, 2019, 4:24:45 PM</small>
 </section>
 					<section>
-						<h1 id="api-client">API Client</h1>
-<p>Frontless makes use of <a href="https://docs.feathersjs.com/api/client.html">Feathers.JS Client</a> because it works the same way in any environment.
-There are two general ways to call API methods from the application:</p>
-<h3 id="1-unauthorized-mode">1. Unauthorized mode</h3>
-<p>API Client imported directly from the module is not authorized:</p>
-<pre><code class="language-javascript">import 'client' from 'client'
+						<h1 id="mit-license">MIT License</h1>
+<pre><code>MIT License
 
-const Model = client.service('/myservice')
+Copyright (c) 2019 Anton Nesterov
 
-Model.create({message: 'hello!'}).then((res)=&gt;{
-  alert('Message created!')
-})
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the &quot;Software&quot;), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED &quot;AS IS&quot;, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 </code></pre>
-<h3 id="2-authorized-mode">2. Authorized mode</h3>
-<p>Frontless provides a Riot.JS plugin to make authorized API requests:</p>
-<pre><code class="language-html">&lt;my-component&gt;
-  &lt;div&gt;{state.value}&lt;/div&gt;
-  &lt;script&gt;
-    export default () =&gt; ({
-      state: {
-        value: ''
-      },
-      createItem(data){
-        const Model = this.client.service('items')
-        Model.create(data)
-      }
-    })
-  &lt;/script&gt;
-&lt;/my-component&gt;
-</code></pre>
-<p>The plugin makes authorized requests that work on the server and browser.</p>
 
 					</section>
 					
 	<section id="pagination" class="clearfix">
 		
-			<a href="start.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
+			<a href="/en/index.html" class="text-muted previous"><i class="fa fa-caret-left" aria-hidden="true"></i> <span>Previous</span></a>
 		
 		
 		
-			<a href="/en/api_client.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
+			<a href="start.html" class="text-muted next"><span>Next</span> <i class="fa fa-caret-right" aria-hidden="true"></i></a>
 									
 	</section>
 

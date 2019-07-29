@@ -1,7 +1,7 @@
 ---
 title: "Directory Structure"
 language: "en"
-next: "pages/markup.html"
+next: "/en/pages/creating_pages.html"
 previous: "start.html"
 ---
 

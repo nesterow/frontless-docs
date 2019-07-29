@@ -1,7 +1,7 @@
 ---
 title: "Routing Scheme"
 language: "en"
-next: "pages/layouts.html"
+next: "/en/forms/handling_forms.html"
 ---
 
 # Routing Scheme

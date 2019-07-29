@@ -1,7 +1,7 @@
 ---
 title: "Handling Forms"
 language: "en"
-next: "forms/handling_forms.html"
+next: "/en/api_client.html"
 ---
 
 # Handling User Input

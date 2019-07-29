@@ -1,7 +1,7 @@
 ---
 title: "Riot.JS"
 language: "en"
-next: "pages/markup.html"
+next: "/en/pages/dependencies.html"
 ---
 
 # Riot.JS Components

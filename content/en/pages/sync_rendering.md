@@ -1,7 +1,7 @@
 ---
 title: "Syncronous Rendering"
 language: "en"
-next: "pages/layouts.html"
+next: "/en/pages/routing_scheme.html"
 ---
 
 # Syncronous Rendering

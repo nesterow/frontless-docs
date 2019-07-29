@@ -1,8 +1,7 @@
 ---
 title: "Feathers.JS Services"
 language: "en"
-next: "/en/services.html"
-previous: "index.html"
+next: "/en/mongodb.html"
 ---
 
 

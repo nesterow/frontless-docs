@@ -1,7 +1,7 @@
 ---
 title: "Server-sent state"
 language: "en"
-next: "forms/handling_forms.html"
+next: "/en/services.html"
 ---
 
 # Server-sent State

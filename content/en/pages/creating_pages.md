@@ -1,7 +1,7 @@
 ---
 title: "Creating Pages"
 language: "en"
-next: "pages/layouts.html"
+next: "/en/pages/components.html"
 ---
 
 # Creating Pages
@@ -68,7 +68,7 @@ Page context is available in the layouts trough the `page` variable.
 
            1.               2.                 3.                  4.
      +-------------+   +-----------+    +----------------+     +----------+
-     | GET '/page' +-->+ onMount() +--->+ beforeRequest()+---->+ fetch()  |
+     | GET '/page' +-->+ onMounted() +-->+ beforeRequest()+---->+ fetch() |
      +-------------+   +-----------+    +----------------+ |   +----------+
                                                            |   +----------+
                                                            +-->+ fetch()..|

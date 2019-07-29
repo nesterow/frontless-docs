@@ -1,7 +1,7 @@
 ---
 title: "Managing Dependencies"
 language: "en"
-next: "pages/layouts.html"
+next: "/en/pages/sync_rendering.html"
 ---
 
 # Managing Dependencies

@@ -1,7 +1,7 @@
 ---
 title: "Feathers.JS Client"
 language: "en"
-next: "/en/api_client.html"
+next: "/en/server_sent_state.html"
 previous: "start.html"
 ---
 
